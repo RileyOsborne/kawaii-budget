@@ -63,6 +63,39 @@ docker run -d \
 
 ---
 
+## 🛡️ TrueNAS SCALE Deployment
+
+Follow these instructions to install Kawaii Budget as a Custom App on TrueNAS SCALE:
+
+### Image Configuration
+- **Application Name:** `kawaii-budget`
+- **Image Repository:** `ghcr.io/rileyosborne/kawaii-budget`
+- **Image Tag:** `latest`
+- **Pull Policy:** `Always pull an image even if it is present on the host`
+
+### Port Forwarding / Network
+- **HTTP Web Interface:**
+  - **Host Port:** `3000` (or your preferred host port, e.g. `3000`)
+  - **Container Port:** `3000` (Protocol: `TCP`)
+
+### Environment Variables
+| Variable | Value | Description |
+|----------|-------|-------------|
+| `NODE_ENV` | `production` | Production mode |
+| `PORT` | `3000` | Internal listening port |
+| `DATA_DIR` | `/data` | Persistent SQLite data directory |
+
+### Storage Configuration
+- **Type:** `Host Path (Path that already exists on the system)`
+- **Mount Path:** `/data`
+- **Host Path:** `/mnt/Applications/KawaiiBudget` (or your preferred dataset path)
+
+### Data Migration & First Run
+- To migrate your existing database, copy `kawaii_budget.sqlite` directly into your host dataset (`/mnt/Applications/KawaiiBudget/kawaii_budget.sqlite`) or restore a `.tar.gz` archive via the in-app **⚙️ Backup & Docker** tab.
+- Automated daily backup snapshots are preserved in your dataset at `/data/backups/`.
+
+---
+
 ## 💾 Backup & Migration
 
 - Go to the **⚙️ Backup & Docker** tab in the web app to create manual snapshots or download/upload backups.
