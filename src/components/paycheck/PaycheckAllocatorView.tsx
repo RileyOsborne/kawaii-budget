@@ -4,6 +4,7 @@ import { useBudget } from '../../context/BudgetContext';
 import { formatCurrency, formatSignedCurrency, getOrdinalSuffix } from '../../utils/formatters';
 import { api } from '../../api/client';
 import { isBillInPaycheck1, calculateMonthlySinkingFundsTotal, isSinkingFundOrSavingsBill, isPaycheckDepositTx, isExplicitP1Tx, isExplicitP2Tx } from '../../utils/calculations';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const PaycheckAllocatorView: React.FC = () => {
   const { paycheckPlan, bills = [], annualBills = [], accounts = [], transactions = [], categories = [], stats, selectedMonth, selectedYear, setSelectedMonth, setSelectedYear, refreshData, showToast } = useBudget();
@@ -1248,8 +1249,8 @@ export const PaycheckAllocatorView: React.FC = () => {
   if (!paycheckPlan) {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-4 bg-white/80 backdrop-blur-sm rounded-3xl border border-[#ebd0d9] shadow-kawaii p-8 text-center animate-in fade-in duration-300">
-        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#7d3c4c] to-[#9f5264] flex items-center justify-center text-3xl shadow-lg shadow-rose-900/15 animate-bounce">
-          🌸
+        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#7d3c4c] to-[#9f5264] flex items-center justify-center shadow-lg shadow-rose-900/15 animate-bounce">
+          <SakuraIcon className="w-9 h-9" />
         </div>
         <div className="space-y-1">
           <h3 className="text-lg font-extrabold text-[#7d3c4c] font-cute">Loading Paycheck Waterfall...</h3>
@@ -1630,7 +1631,7 @@ export const PaycheckAllocatorView: React.FC = () => {
                 <span>How Payday Tracking Works:</span>
               </div>
               <p className="leading-relaxed">
-                🌸 <strong>Paycheck 1</strong> arrives on the <strong>last day of the previous month</strong> (e.g. {prevMonth} {lastDayOfPrevMonth} for {selectedMonth}) to fund bills due from the <strong>1st to the 15th</strong>.<br />
+                <SakuraIcon className="w-3.5 h-3.5 inline-block mr-1 align-text-bottom" /> <strong>Paycheck 1</strong> arrives on the <strong>last day of the previous month</strong> (e.g. {prevMonth} {lastDayOfPrevMonth} for {selectedMonth}) to fund bills due from the <strong>1st to the 15th</strong>.<br />
                 💜 <strong>Paycheck 2</strong> arrives on the <strong>15th of the active month</strong> to fund bills due from the <strong>16th to the end of the month</strong>.
               </p>
             </div>
@@ -1642,7 +1643,7 @@ export const PaycheckAllocatorView: React.FC = () => {
                 <div className="p-5 bg-[#fdf6f8]/70 rounded-2xl border border-[#ebd0d9] space-y-4">
                   <div className="flex items-center justify-between border-b border-rose-100 pb-2.5">
                     <h4 className="font-extrabold text-[#7d3c4c] text-sm font-cute flex items-center gap-2">
-                      <span>🌸</span> Paycheck 1 Timing &amp; Coverage
+                      <SakuraIcon className="w-4 h-4 shrink-0" /> Paycheck 1 Timing &amp; Coverage
                     </h4>
                     <span className="text-[10px] font-bold text-rose-600 bg-white px-2 py-0.5 rounded-full border border-rose-200">
                       Early Month Bills
@@ -1904,7 +1905,7 @@ export const PaycheckAllocatorView: React.FC = () => {
             <div className="p-5 bg-[#fdf6f8]/50 rounded-2xl border border-[#ebd0d9] space-y-4">
               <div className="flex items-center justify-between border-b border-rose-100 pb-2">
                 <h4 className="font-extrabold text-[#1f242e] text-sm font-cute flex items-center gap-2">
-                  <span>🌸</span> Paycheck 1 Settings
+                  <SakuraIcon className="w-4 h-4 shrink-0" /> Paycheck 1 Settings
                 </h4>
                 <div className="flex items-center gap-1.5">
                   <label className="text-[11px] font-bold text-[#52212e]">Period Label:</label>
@@ -2027,8 +2028,8 @@ export const PaycheckAllocatorView: React.FC = () => {
                   className="w-full px-3 py-1.5 border border-[#ebd0d9] rounded-xl text-xs font-mono bg-white focus:outline-rose-400"
                 />
                 {isP1PaidPriorToMonth && (
-                  <p className="text-[10px] text-rose-600 font-medium mt-1">
-                    🌸 Paid {scheduledP1PayDate}: Inflow is already included in Starting Rollover ($0.00 waterfall addition)
+                  <p className="text-[10px] text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <SakuraIcon className="w-3 h-3 shrink-0" /> Paid {scheduledP1PayDate}: Inflow is already included in Starting Rollover ($0.00 waterfall addition)
                   </p>
                 )}
               </div>
@@ -2289,7 +2290,7 @@ export const PaycheckAllocatorView: React.FC = () => {
             <div className="p-5 bg-purple-50/30 rounded-2xl border border-purple-200/70 space-y-4">
               <div className="flex items-center justify-between border-b border-purple-100 pb-2">
                 <h4 className="font-extrabold text-[#1f242e] text-sm font-cute flex items-center gap-2">
-                  <span>🌸</span> Paycheck 2 Settings
+                  <SakuraIcon className="w-4 h-4 shrink-0" /> Paycheck 2 Settings
                 </h4>
                 <div className="flex items-center gap-1.5">
                   <label className="text-[11px] font-bold text-[#52212e]">Period Label:</label>

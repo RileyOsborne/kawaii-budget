@@ -11,6 +11,7 @@ import { useBudget } from '../../context/BudgetContext';
 import { formatCurrency, formatPercent, formatDate } from '../../utils/formatters';
 import { ProgressBar } from '../common/ProgressBar';
 import { KawaiiBadge } from '../common/KawaiiBadge';
+import { SakuraIcon } from '../common/SakuraIcon';
 import { api } from '../../api/client';
 import { Goal } from '../../types';
 
@@ -212,7 +213,9 @@ export const GoalsView: React.FC = () => {
                   <div>
                     <div className="flex justify-between items-start gap-2">
                       <div className="flex items-center gap-3">
-                        <span className="text-3xl">{g.icon || '🎯'}</span>
+                        <span className="text-3xl flex items-center justify-center">
+                          {g.icon === '🌸' ? <SakuraIcon className="w-8 h-8" /> : (g.icon || '🎯')}
+                        </span>
                         <div>
                           <h4 className="text-base font-bold text-[#1f242e] font-cute">{g.name}</h4>
                           <div className="flex items-center gap-1.5 mt-0.5">
@@ -224,7 +227,9 @@ export const GoalsView: React.FC = () => {
                       </div>
 
                       {isDone ? (
-                        <KawaiiBadge variant="green">🌸 Goal Reached!</KawaiiBadge>
+                        <KawaiiBadge variant="green" className="flex items-center gap-1.5">
+                          <SakuraIcon className="w-3.5 h-3.5" /> Goal Reached!
+                        </KawaiiBadge>
                       ) : (
                         <span className="text-[11px] font-mono font-bold text-[#7d3c4c] bg-[#fdf6f8] px-2.5 py-1 rounded-xl border border-[#ebd0d9]">
                           {g.target_date ? `Due ${formatDate(g.target_date)}` : 'Ongoing'}
@@ -294,7 +299,9 @@ export const GoalsView: React.FC = () => {
           <div className="bg-white rounded-3xl shadow-2xl border-2 border-[#ebd0d9] w-full max-w-md p-6 space-y-4 animate-in zoom-in-95 duration-150">
             <div className="flex items-center justify-between pb-3 border-b border-[#ebd0d9]">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">{newGoal.icon || '🎯'}</span>
+                <span className="text-2xl flex items-center justify-center">
+                  {newGoal.icon === '🌸' ? <SakuraIcon className="w-6 h-6 inline-block" /> : (newGoal.icon || '🎯')}
+                </span>
                 <div>
                   <h3 className="text-base font-extrabold text-[#7d3c4c] font-cute">
                     Create Financial Goal
@@ -398,7 +405,7 @@ export const GoalsView: React.FC = () => {
                         onClick={() => setNewGoal({ ...newGoal, icon: emoji })}
                         className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center hover:scale-110 transition-transform ${newGoal.icon === emoji ? 'bg-rose-100 border border-rose-300' : 'bg-slate-50'}`}
                       >
-                        {emoji}
+                        {emoji === '🌸' ? <SakuraIcon className="w-4 h-4" /> : emoji}
                       </button>
                     ))}
                   </div>
@@ -449,7 +456,7 @@ export const GoalsView: React.FC = () => {
             <div className="flex items-center justify-between pb-3 border-b border-[#ebd0d9]">
               <div className="flex items-center gap-2">
                 <span className="w-8 h-8 rounded-xl bg-[#fdf6f8] border border-[#ebd0d9] flex items-center justify-center text-base shadow-2xs">
-                  {editGoalForm.icon}
+                  {editGoalForm.icon === '🌸' ? <SakuraIcon className="w-5 h-5" /> : (editGoalForm.icon || '🎯')}
                 </span>
                 <div>
                   <h3 className="text-base font-extrabold text-[#7d3c4c] font-cute">
@@ -551,7 +558,7 @@ export const GoalsView: React.FC = () => {
                         onClick={() => setEditGoalForm({ ...editGoalForm, icon: emoji })}
                         className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center hover:scale-110 transition-transform ${editGoalForm.icon === emoji ? 'bg-rose-100 border border-rose-300' : 'bg-slate-50'}`}
                       >
-                        {emoji}
+                        {emoji === '🌸' ? <SakuraIcon className="w-4 h-4" /> : emoji}
                       </button>
                     ))}
                   </div>

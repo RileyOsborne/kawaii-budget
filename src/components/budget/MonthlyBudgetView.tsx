@@ -5,6 +5,7 @@ import { formatCurrency, formatPercent, getOrdinalSuffix } from '../../utils/for
 import { ProgressBar } from '../common/ProgressBar';
 import { api } from '../../api/client';
 import { isBillInPaycheck1 } from '../../utils/calculations';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 const PRESET_COLORS = [
   '#7d3c4c', // deep mauve
@@ -444,8 +445,8 @@ export const MonthlyBudgetView: React.FC = () => {
       {/* Month Selector & Header Bar */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-3xl border border-[#e4e0e2] shadow-kawaii">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-[#fdf2f4] flex items-center justify-center text-2xl border border-[#f8ccd6] shadow-2xs shrink-0">
-            🌸
+          <div className="w-12 h-12 rounded-2xl bg-[#fdf2f4] flex items-center justify-center border border-[#f8ccd6] shadow-2xs shrink-0">
+            <SakuraIcon className="w-6 h-6" />
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#7d3c4c] font-cute flex items-center gap-2">
@@ -705,7 +706,9 @@ export const MonthlyBudgetView: React.FC = () => {
                     {/* Category Column */}
                     <td className="py-3.5 px-4 sm:px-6 text-[#1f242e] font-bold">
                       <div className="flex items-center gap-2.5">
-                        <span className="text-base">{cat.icon}</span>
+                        <span className="text-base flex items-center justify-center">
+                          {cat.icon === '🌸' ? <SakuraIcon className="w-4 h-4 inline-block" /> : cat.icon}
+                        </span>
                         <span>{cat.name}</span>
                       </div>
                     </td>
@@ -841,7 +844,9 @@ export const MonthlyBudgetView: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 max-w-md w-full border-2 border-[#ebd0d9] shadow-2xl space-y-4 animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-[#ebd0d9]">
               <div className="flex items-center gap-2.5">
-                <span className="text-2xl">{newCat.icon || '🌸'}</span>
+                <span className="text-2xl flex items-center justify-center">
+                  {(!newCat.icon || newCat.icon === '🌸') ? <SakuraIcon className="w-6 h-6 inline-block" /> : newCat.icon}
+                </span>
                 <div>
                   <h3 className="text-base font-extrabold text-[#7d3c4c] font-cute">
                     Add New Budget Category
@@ -922,7 +927,7 @@ export const MonthlyBudgetView: React.FC = () => {
                           onClick={() => setNewCat({ ...newCat, icon: emoji })}
                           className={`w-5 h-5 rounded-md text-xs flex items-center justify-center hover:scale-110 transition-transform ${newCat.icon === emoji ? 'bg-rose-100 border border-rose-300' : 'bg-slate-50'}`}
                         >
-                          {emoji}
+                          {emoji === '🌸' ? <SakuraIcon className="w-3.5 h-3.5" /> : emoji}
                         </button>
                       ))}
                     </div>
@@ -987,7 +992,9 @@ export const MonthlyBudgetView: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 border-2 border-[#ebd0d9] shadow-2xl max-w-md w-full animate-in zoom-in-95 duration-200 space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#ebd0d9]">
               <div className="flex items-center gap-2.5">
-                <span className="text-2xl">{categoryForm.icon}</span>
+                <span className="text-2xl flex items-center justify-center">
+                  {categoryForm.icon === '🌸' ? <SakuraIcon className="w-6 h-6 inline-block" /> : categoryForm.icon}
+                </span>
                 <div>
                   <h3 className="text-base font-extrabold text-[#1f242e] font-cute">
                     Edit Category
@@ -1040,7 +1047,7 @@ export const MonthlyBudgetView: React.FC = () => {
                           onClick={() => setCategoryForm({ ...categoryForm, icon: emoji })}
                           className={`w-5 h-5 rounded-md text-xs flex items-center justify-center hover:scale-110 transition-transform ${categoryForm.icon === emoji ? 'bg-rose-100 border border-rose-300' : 'bg-slate-50'}`}
                         >
-                          {emoji}
+                          {emoji === '🌸' ? <SakuraIcon className="w-3.5 h-3.5" /> : emoji}
                         </button>
                       ))}
                     </div>
@@ -1174,7 +1181,9 @@ export const MonthlyBudgetView: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 max-w-xl w-full border-2 border-[#ebd0d9] shadow-2xl space-y-4 animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between pb-3 border-b border-[#ebd0d9]">
               <div className="flex items-center gap-2.5">
-                <span className="text-3xl">{breakdownCat.icon || '🌸'}</span>
+                <span className="text-3xl flex items-center justify-center">
+                  {(!breakdownCat.icon || breakdownCat.icon === '🌸') ? <SakuraIcon className="w-8 h-8 inline-block" /> : breakdownCat.icon}
+                </span>
                 <div>
                   <h3 className="text-base font-extrabold text-[#7d3c4c] font-cute flex items-center gap-1.5">
                     <span>{breakdownCat.name}</span>
@@ -1233,7 +1242,7 @@ export const MonthlyBudgetView: React.FC = () => {
               <div className="max-h-64 overflow-y-auto space-y-2 pr-1">
                 {breakdownItems.length === 0 ? (
                   <div className="text-center py-8 text-xs text-[#8c6b73] bg-[#fdf6f8] rounded-2xl border border-[#ebd0d9]">
-                    <span>🌸 No expenses or charges logged for {breakdownCat.name} in {selectedMonth} {selectedYear}.</span>
+                    <span className="flex items-center justify-center gap-1.5"><SakuraIcon className="w-3.5 h-3.5 shrink-0" /> No expenses or charges logged for {breakdownCat.name} in {selectedMonth} {selectedYear}.</span>
                   </div>
                 ) : (
                   breakdownItems.map(item => (
@@ -1276,7 +1285,7 @@ export const MonthlyBudgetView: React.FC = () => {
 
             {/* Kawaii Real-Time Note */}
             <div className="bg-[#f0fdf4] border border-emerald-200 rounded-2xl p-2.5 flex items-center gap-2 text-emerald-800 text-[11px] font-medium">
-              <span className="text-base">🌸</span>
+              <SakuraIcon className="w-4 h-4 shrink-0" />
               <span>
                 <strong>Real-Time Credit Card Sync:</strong> Credit card charges directly increase your actual budget spend without altering your spendable checking cash!
               </span>

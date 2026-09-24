@@ -20,6 +20,7 @@ import { useBudget } from '../../context/BudgetContext';
 import { api } from '../../api/client';
 import { formatCurrency } from '../../utils/formatters';
 import { BackupItem, ExternalBackupInspection } from '../../types';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const BackupExportView: React.FC = () => {
   const { refreshData, showToast, triggerConfetti } = useBudget();
@@ -383,7 +384,7 @@ export const BackupExportView: React.FC = () => {
           </div>
         ) : backups.length === 0 ? (
           <div className="py-12 text-center space-y-3 bg-[#fdf6f8]/40 rounded-2xl border border-dashed border-[#ebd0d9]">
-            <span className="text-3xl">🌸</span>
+            <SakuraIcon className="w-8 h-8 mx-auto" />
             <p className="text-xs font-bold text-[#7d3c4c]">No tarball backups found yet</p>
             <p className="text-[11px] text-[#64748b]">Click "Create Instant Backup (.tar.gz)" above to create your first snapshot!</p>
           </div>

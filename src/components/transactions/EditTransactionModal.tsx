@@ -4,6 +4,7 @@ import { useBudget } from '../../context/BudgetContext';
 import { api } from '../../api/client';
 import { Transaction } from '../../types';
 import { getDefaultTypeForCategory } from '../../utils/categoryDefaults';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 interface Props {
   transaction: Transaction | null;
@@ -383,7 +384,7 @@ export const EditTransactionModal: React.FC<Props> = ({
           {/* Credit Card Payment Auto-Sync Notice */}
           {isCreditCard && formData.type === 'Payment' && (
             <div className="bg-[#f0fdf4] border border-emerald-200 rounded-2xl p-2.5 flex items-center gap-2 text-emerald-800 text-[11px] font-medium animate-in fade-in">
-              <span className="text-base">🌸</span>
+              <SakuraIcon className="w-4 h-4 shrink-0" />
               <span>
                 <strong>Automatic Checking Sync:</strong> Saving changes to this payment will automatically sync the matching withdrawal entry in your <strong>Checking Ledger</strong>!
               </span>

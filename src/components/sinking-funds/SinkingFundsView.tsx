@@ -5,6 +5,7 @@ import { formatCurrency, formatDate } from '../../utils/formatters';
 import { calculateMonthlySinkingFundsTotal } from '../../utils/calculations';
 import { api } from '../../api/client';
 import { KawaiiBadge } from '../common/KawaiiBadge';
+import { SakuraIcon } from '../common/SakuraIcon';
 import { AnnualBill } from '../../types';
 
 export const SinkingFundsView: React.FC = () => {
@@ -207,7 +208,7 @@ export const SinkingFundsView: React.FC = () => {
               {annuals.map((b, idx) => (
                 <tr key={b.id} className={`hover:bg-[#faedf1] border-b border-[#f1eded] ${idx % 2 === 1 ? 'bg-[#fdf6f8]' : 'bg-white'}`}>
                   <td className="py-3.5 px-6 font-bold text-[#1f242e] flex items-center gap-2">
-                    <span>🌸</span>
+                    <SakuraIcon className="w-4 h-4 shrink-0" />
                     <span className={b.is_paid ? 'line-through text-[#64748b]' : ''}>{b.name}</span>
                   </td>
                   <td className="py-3.5 px-4 font-mono text-[#52212e]">{formatDate(b.due_date)}</td>
@@ -224,7 +225,9 @@ export const SinkingFundsView: React.FC = () => {
                       title={`Click to mark as ${b.is_paid ? 'unpaid' : 'paid'}`}
                     >
                       <Check className={`w-3.5 h-3.5 ${b.is_paid ? 'stroke-[3]' : 'text-slate-300'}`} />
-                      <span>{b.is_paid ? 'Paid 🌸' : 'Unpaid'}</span>
+                      <span className="flex items-center gap-1">
+                        {b.is_paid ? <>Paid <SakuraIcon className="w-3 h-3" /></> : 'Unpaid'}
+                      </span>
                     </button>
                   </td>
                   <td className="py-3.5 px-4 text-center">
@@ -284,7 +287,7 @@ export const SinkingFundsView: React.FC = () => {
               {biannuals.map((b, idx) => (
                 <tr key={b.id} className={`hover:bg-[#faedf1] border-b border-[#f1eded] ${idx % 2 === 1 ? 'bg-[#fdf6f8]' : 'bg-white'}`}>
                   <td className="py-3.5 px-6 font-bold text-[#1f242e] flex items-center gap-2">
-                    <span>🌸</span>
+                    <SakuraIcon className="w-4 h-4 shrink-0" />
                     <span className={b.is_paid ? 'line-through text-[#64748b]' : ''}>{b.name}</span>
                   </td>
                   <td className="py-3.5 px-4 font-mono text-[#52212e]">{formatDate(b.due_date)}</td>
@@ -301,7 +304,9 @@ export const SinkingFundsView: React.FC = () => {
                       title={`Click to mark as ${b.is_paid ? 'unpaid' : 'paid'}`}
                     >
                       <Check className={`w-3.5 h-3.5 ${b.is_paid ? 'stroke-[3]' : 'text-slate-300'}`} />
-                      <span>{b.is_paid ? 'Paid 🌸' : 'Unpaid'}</span>
+                      <span className="flex items-center gap-1">
+                        {b.is_paid ? <>Paid <SakuraIcon className="w-3 h-3" /></> : 'Unpaid'}
+                      </span>
                     </button>
                   </td>
                   <td className="py-3.5 px-4 text-center">
@@ -335,7 +340,7 @@ export const SinkingFundsView: React.FC = () => {
           <div className="bg-white rounded-3xl p-6 max-w-md w-full border border-[#e4e0e2] shadow-2xl space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-extrabold text-[#7d3c4c] font-cute flex items-center gap-2">
-                <span>🌸</span> Add Sinking Fund
+                <SakuraIcon className="w-5 h-5" /> Add Sinking Fund
               </h3>
               <button
                 onClick={() => setShowAdd(false)}

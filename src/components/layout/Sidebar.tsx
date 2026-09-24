@@ -12,6 +12,7 @@ import {
   Car
 } from 'lucide-react';
 import { useBudget } from '../../context/BudgetContext';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const Sidebar: React.FC = () => {
   const { activeTab, setActiveTab, setSelectedAccountId } = useBudget();
@@ -33,7 +34,7 @@ export const Sidebar: React.FC = () => {
                 : 'text-[#1f242e] hover:bg-[#fdf6f8] hover:text-[#7d3c4c]'
             }`}
           >
-            <span className="text-base">🌸</span>
+            <SakuraIcon className="w-4 h-4 shrink-0" />
             <span className="flex-1">Monthly Budget</span>
           </button>
 

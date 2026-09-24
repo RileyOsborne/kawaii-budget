@@ -3,6 +3,7 @@ import { Plus, Search, Sparkles, ShieldCheck, Wallet, PiggyBank, CreditCard, Set
 import { useBudget } from '../../context/BudgetContext';
 import { formatCurrency } from '../../utils/formatters';
 import { KawaiiMascot } from './KawaiiMascot';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const Navbar: React.FC = () => {
   const { stats, activeTab, setActiveTab, setIsQuickAddOpen, setIsCommandPaletteOpen } = useBudget();
@@ -12,8 +13,8 @@ export const Navbar: React.FC = () => {
       <div className="w-full flex items-center justify-between gap-4">
         {/* Brand */}
         <div className="flex items-center gap-3 shrink-0">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#7d3c4c] to-[#9f5264] flex items-center justify-center text-xl shadow-md text-white shadow-rose-900/15 shrink-0">
-            🌸
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#7d3c4c] to-[#9f5264] flex items-center justify-center p-2 shadow-md shadow-rose-900/15 shrink-0">
+            <SakuraIcon className="w-6 h-6 object-contain" />
           </div>
           <div>
             <h1 className="text-lg font-extrabold text-[#7d3c4c] tracking-tight font-cute flex items-center gap-1.5 leading-tight">
@@ -41,7 +42,7 @@ export const Navbar: React.FC = () => {
               {/* Tooltip Header */}
               <div className="flex items-center justify-between pb-2 border-b border-[#f1eded]">
                 <div className="flex items-center gap-1.5 font-bold text-[#7d3c4c] font-cute text-xs">
-                  <span>🌸</span>
+                  <SakuraIcon className="w-4 h-4 shrink-0" />
                   <span>Spendable Cash Breakdown</span>
                 </div>
                 <span className="text-[10px] font-bold text-[#64748b]">Checking</span>

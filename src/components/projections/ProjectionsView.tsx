@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useBudget } from '../../context/BudgetContext';
 import { formatCurrency, formatPercent, formatDate } from '../../utils/formatters';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const ProjectionsView: React.FC = () => {
   const { 
@@ -430,7 +431,7 @@ export const ProjectionsView: React.FC = () => {
         <div className="bg-white rounded-3xl p-5 border border-[#e4e0e2] shadow-kawaii space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
             <h4 className="text-sm font-extrabold text-[#1f242e] font-cute flex items-center gap-2">
-              <span>🌸</span> {selectedYear} Monthly Ledger Contributions (Actuals Only)
+              <SakuraIcon className="w-4 h-4 shrink-0 inline-block" /> {selectedYear} Monthly Ledger Contributions (Actuals Only)
             </h4>
             <span className="text-[11px] text-[#64748b] font-medium">
               Net balance changes strictly recorded in your Savings Account
@@ -460,7 +461,7 @@ export const ProjectionsView: React.FC = () => {
                 >
                   <div className="text-[11px] font-extrabold text-[#7d3c4c] font-cute flex items-center justify-center gap-1">
                     <span>{m.name}</span>
-                    {hasActivity && <span className="text-[9px]" title="Active ledger records">🌸</span>}
+                    {hasActivity && <SakuraIcon className="w-3 h-3 inline-block" title="Active ledger records" />}
                   </div>
                   <div className={`text-xs font-extrabold font-mono mt-1 ${
                     hasActivity 

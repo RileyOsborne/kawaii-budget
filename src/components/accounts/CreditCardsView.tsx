@@ -7,6 +7,7 @@ import { MonthYearFilter, MONTH_NAMES } from '../common/MonthYearFilter';
 import { api } from '../../api/client';
 import { Transaction } from '../../types';
 import { EditTransactionModal } from '../transactions/EditTransactionModal';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const CreditCardsView: React.FC = () => {
   const { accounts, transactions, selectedAccountId, setSelectedAccountId, selectedMonth, selectedYear, refreshData, showToast, setIsQuickAddOpen, triggerConfetti } = useBudget();
@@ -266,7 +267,7 @@ export const CreditCardsView: React.FC = () => {
       <div className="bg-white rounded-3xl p-5 border border-[#e4e0e2] shadow-kawaii space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#f1eded] pb-3">
           <label className="text-xs font-bold text-[#1f242e] flex items-center gap-2 font-cute">
-            <span>🌸 Select Credit Card Account</span>
+            <span className="flex items-center gap-1.5"><SakuraIcon className="w-4 h-4 shrink-0" /> Select Credit Card Account</span>
           </label>
 
           <div className="flex items-center gap-3 text-xs">
@@ -328,7 +329,9 @@ export const CreditCardsView: React.FC = () => {
             <div className="flex items-center gap-2">
               <h3 className="text-xl font-extrabold text-[#7d3c4c] font-cute">{currentAccount?.name}</h3>
               {isPaidOff ? (
-                <KawaiiBadge variant="green">🌸 100% PAID OFF</KawaiiBadge>
+                <KawaiiBadge variant="green" className="flex items-center gap-1">
+                  <SakuraIcon className="w-3.5 h-3.5" /> 100% PAID OFF
+                </KawaiiBadge>
               ) : (
                 <KawaiiBadge variant="mauve">Due {getOrdinalSuffix(currentAccount?.due_day)}</KawaiiBadge>
               )}
@@ -556,7 +559,7 @@ export const CreditCardsView: React.FC = () => {
               {displayedTransactions.length === 0 && (
                 <tr>
                   <td colSpan={8} className="py-12 text-center text-[#64748b]">
-                    <span className="text-3xl block mb-2">🌸</span>
+                    <SakuraIcon className="w-10 h-10 mx-auto mb-2 opacity-80" />
                     <p className="font-bold text-sm text-[#7d3c4c]">
                       {selectedPeriod !== 'ALL' || searchQuery || typeFilter !== 'ALL'
                         ? `No transaction entries match your filters for ${periodSummary.periodLabel}`

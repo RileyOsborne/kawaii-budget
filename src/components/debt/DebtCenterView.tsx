@@ -5,6 +5,7 @@ import { formatCurrency, formatPercent, getOrdinalSuffix, formatApr } from '../.
 import { ProgressBar } from '../common/ProgressBar';
 import { KawaiiBadge } from '../common/KawaiiBadge';
 import { DebtSnowballCalculator } from './DebtSnowballCalculator';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const DebtCenterView: React.FC = () => {
   const { stats, accounts, setActiveTab, setSelectedAccountId, setIsQuickAddOpen } = useBudget();
@@ -25,7 +26,7 @@ export const DebtCenterView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f242e] font-cute flex items-center gap-2">
-            <span>🌸</span> Debt Payoff Hub
+            <SakuraIcon className="w-7 h-7" /> Debt Payoff Hub
           </h2>
           <p className="text-xs text-rose-400 font-medium mt-1">
             Track, crush, and eliminate your revolving credit, personal &amp; auto loans
@@ -127,7 +128,11 @@ export const DebtCenterView: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-2xl">{acc.icon}</span>
                         {isPaidOff ? (
-                          <KawaiiBadge variant="green">🌸 100% PAID OFF</KawaiiBadge>
+                          <KawaiiBadge variant="green">
+                            <span className="flex items-center gap-1">
+                              <SakuraIcon className="w-3 h-3" /> 100% PAID OFF
+                            </span>
+                          </KawaiiBadge>
                         ) : (
                           <KawaiiBadge variant="mauve">Due {getOrdinalSuffix(acc.due_day)}</KawaiiBadge>
                         )}

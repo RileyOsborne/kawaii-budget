@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, Plus, Calendar, CreditCard, DollarSign, PieChart, Target, Database, X, Landmark, Car, Sparkles, TrendingUp, ArrowRight, CornerDownLeft } from 'lucide-react';
 import { useBudget } from '../../context/BudgetContext';
+import { SakuraIcon } from './SakuraIcon';
+
+const SakuraPaletteIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+  <SakuraIcon className={className} />
+);
 
 export const CommandPalette: React.FC = () => {
   const { 
@@ -19,7 +24,7 @@ export const CommandPalette: React.FC = () => {
 
   const baseActions = useMemo(() => [
     { label: 'Add New Transaction', icon: Plus, action: () => { setIsQuickAddOpen(true); setIsCommandPaletteOpen(false); }, shortcut: 'N', group: 'Quick Actions' },
-    { label: '🌸 Monthly Budget Overview', icon: PieChart, action: () => { setActiveTab('budget'); setIsCommandPaletteOpen(false); }, shortcut: '1', group: 'Views' },
+    { label: 'Monthly Budget Overview', icon: SakuraPaletteIcon, action: () => { setActiveTab('budget'); setIsCommandPaletteOpen(false); }, shortcut: '1', group: 'Views' },
     { label: '📅 Monthly Bill Breakdown', icon: Calendar, action: () => { setActiveTab('bills'); setIsCommandPaletteOpen(false); }, shortcut: '2', group: 'Views' },
     { label: '📦 Annual & Biannual Sinking Funds', icon: Target, action: () => { setActiveTab('sinking'); setIsCommandPaletteOpen(false); }, shortcut: '3', group: 'Views' },
     { label: '⚡ Debt Payoff Hub', icon: Sparkles, action: () => { setActiveTab('debt'); setIsCommandPaletteOpen(false); }, shortcut: '4', group: 'Views' },
@@ -195,7 +200,7 @@ export const CommandPalette: React.FC = () => {
 
           {filtered.length === 0 && (
             <div className="text-center py-12 text-[#64748b] text-sm">
-              <span className="text-3xl block mb-2">🌸</span>
+              <SakuraIcon className="w-8 h-8 mx-auto mb-2" />
               No matching pages or accounts found
             </div>
           )}
@@ -220,7 +225,9 @@ export const CommandPalette: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-[11px] text-rose-400 font-semibold font-cute">🌸 Power-User Ready</span>
+            <span className="text-[11px] text-rose-400 font-semibold font-cute flex items-center gap-1">
+              <SakuraIcon className="w-3.5 h-3.5" /> Power-User Ready
+            </span>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { api } from '../../api/client';
 import { Transaction } from '../../types';
 import { getDefaultTypeForCategory } from '../../utils/categoryDefaults';
 import { formatCurrency } from '../../utils/formatters';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const QuickAddModal: React.FC = () => {
   const { isQuickAddOpen, setIsQuickAddOpen, accounts, categories, refreshData, showToast, triggerConfetti, selectedMonth, selectedYear, selectedAccountId } = useBudget();
@@ -218,7 +219,7 @@ export const QuickAddModal: React.FC = () => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#e4e0e2] bg-[#fdf6f8]">
           <div className="flex items-center gap-2.5">
             <span className="w-8 h-8 rounded-xl bg-white border border-[#ebd0d9] flex items-center justify-center text-sm shadow-2xs">
-              🌸
+              <SakuraIcon className="w-4 h-4" />
             </span>
             <div>
               <h3 className="text-base font-extrabold text-[#7d3c4c] font-cute">Add Transaction</h3>
@@ -404,8 +405,9 @@ export const QuickAddModal: React.FC = () => {
                     <span>{destAcc?.icon}</span> {destAcc?.name}: <span className="font-mono">+{formatCurrency(parseFloat(formData.amount) || 0)}</span>
                   </span>
                 </div>
-                <p className="text-[10px] text-[#8c6b73]">
-                  🌸 <strong>Zero-Sum Execution:</strong> Generates two linked entries simultaneously (negative withdrawal in Source and positive deposit in Destination) without inflating living expenses or income.
+                <p className="text-[10px] text-[#8c6b73] flex items-start gap-1">
+                  <SakuraIcon className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span><strong>Zero-Sum Execution:</strong> Generates two linked entries simultaneously (negative withdrawal in Source and positive deposit in Destination) without inflating living expenses or income.</span>
                 </p>
               </div>
 
@@ -570,7 +572,7 @@ export const QuickAddModal: React.FC = () => {
               {/* Credit Card Payment Auto-Sync Notice */}
               {isCreditCard && formData.type === 'Payment' && (
                 <div className="bg-[#f0fdf4] border border-emerald-200 rounded-2xl p-2.5 flex items-center gap-2 text-emerald-800 text-[11px] font-medium animate-in fade-in">
-                  <span className="text-base">🌸</span>
+                  <SakuraIcon className="w-4 h-4 shrink-0" />
                   <span>
                     <strong>Automatic Checking Sync:</strong> Saving this payment will automatically create a matching withdrawal entry in your <strong>Checking Ledger</strong>!
                   </span>

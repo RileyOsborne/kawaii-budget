@@ -16,6 +16,7 @@ import { GoalsView } from './components/goals/GoalsView';
 import { BackupExportView } from './components/backup/BackupExportView';
 import { QuickAddModal } from './components/transactions/QuickAddModal';
 import { CommandPalette } from './components/common/CommandPalette';
+import { SakuraIcon } from './components/common/SakuraIcon';
 
 export const App: React.FC = () => {
   const { activeTab, loading, toastMessage } = useBudget();
@@ -65,7 +66,7 @@ export const App: React.FC = () => {
         <main className="flex-1 w-full min-w-0">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-24 space-y-3">
-              <span className="text-4xl animate-bounce">🌸</span>
+              <SakuraIcon className="w-12 h-12 animate-bounce" />
               <p className="text-sm font-bold text-[#7d3c4c] font-cute">Loading your Kawaii Budget...</p>
             </div>
           ) : (
@@ -77,7 +78,7 @@ export const App: React.FC = () => {
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#7d3c4c] text-white px-5 py-3 rounded-2xl shadow-2xl border border-rose-300 font-bold text-xs flex items-center gap-2 animate-in slide-in-from-bottom-5 duration-300">
-          <span>🌸</span>
+          <SakuraIcon className="w-4 h-4 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}

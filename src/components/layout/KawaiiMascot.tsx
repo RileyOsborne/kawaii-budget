@@ -3,6 +3,7 @@ import { Sparkles, Heart } from 'lucide-react';
 import { useBudget } from '../../context/BudgetContext';
 
 import { formatCurrency } from '../../utils/formatters';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const KawaiiMascot: React.FC = () => {
   const { stats, accounts, goals, triggerConfetti } = useBudget();
@@ -57,7 +58,7 @@ export const KawaiiMascot: React.FC = () => {
         title="Click me for encouragement!"
         className="group relative flex items-center gap-2 bg-gradient-to-r from-rose-100 to-pink-100 border border-rose-200 hover:border-pink-300 px-3 py-1.5 rounded-full shadow-sm hover:shadow-md transition-all active:scale-95"
       >
-        <span className="text-xl animate-float inline-block">🌸</span>
+        <SakuraIcon className="w-5 h-5 animate-float inline-block object-contain" />
         <span className="text-xs font-bold text-kawaii-deep flex items-center gap-1 font-cute">
           Sakura <Sparkles className="w-3 h-3 text-amber-500 fill-amber-400" />
         </span>

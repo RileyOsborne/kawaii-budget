@@ -8,6 +8,7 @@ import { MonthYearFilter, MONTH_NAMES } from '../common/MonthYearFilter';
 import { api } from '../../api/client';
 import { Transaction } from '../../types';
 import { EditTransactionModal } from '../transactions/EditTransactionModal';
+import { SakuraIcon } from '../common/SakuraIcon';
 
 export const FixedDebtView: React.FC = () => {
   const { accounts, transactions, selectedAccountId, setSelectedAccountId, selectedMonth, selectedYear, refreshData, showToast, setIsQuickAddOpen, triggerConfetti } = useBudget();
@@ -496,7 +497,7 @@ export const FixedDebtView: React.FC = () => {
               {displayedTransactions.length === 0 && (
                 <tr>
                   <td colSpan={7} className="py-12 text-center text-[#64748b]">
-                    <span className="text-3xl block mb-2">🌸</span>
+                    <SakuraIcon className="w-10 h-10 mx-auto mb-2 opacity-80" />
                     <p className="font-bold text-sm text-[#7d3c4c]">
                       {selectedPeriod !== 'ALL' || searchQuery
                         ? `No payment entries match your filters for ${periodSummary.periodLabel}`
