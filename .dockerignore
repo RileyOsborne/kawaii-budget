@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-server
+data
+data/**
+*.sqlite*
+*.db
+*.tar.gz
+seed_data.json
+extracted_sheets.json
+sheets_detailed_analysis.txt
+*.py
+.git
+.gitignore
+.env*
+*.log
