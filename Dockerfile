@@ -27,8 +27,8 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV DATA_DIR=/data
 
-# Install minimal runtime dependencies + su-exec for safe permission handling
-RUN apk add --no-cache tzdata tar gzip su-exec
+# Install minimal runtime dependencies + su-exec and curl
+RUN apk add --no-cache tzdata tar gzip su-exec curl
 
 # Copy production node_modules from builder (including precompiled native better-sqlite3)
 COPY --from=builder /app/node_modules ./node_modules
@@ -47,9 +47,6 @@ RUN mkdir -p /data && chown -R node:node /data /app
 
 VOLUME ["/data"]
 EXPOSE 3000
-
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["node", "dist-server/index.js"]
