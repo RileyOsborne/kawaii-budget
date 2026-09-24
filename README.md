@@ -74,9 +74,10 @@ Follow these instructions to install Kawaii Budget as a Custom App on TrueNAS SC
 - **Pull Policy:** `Always pull an image even if it is present on the host`
 
 ### Port Forwarding / Network
-- **HTTP Web Interface:**
-  - **Host Port:** `3000` (or your preferred host port, e.g. `3000`)
-  - **Container Port:** `3000` (Protocol: `TCP`)
+TrueNAS requires specifying both a Container Port and a Host Port:
+- **Container Port:** `3000` (**Must be `3000`** — Node.js and internal container health checks strictly listen on port 3000)
+- **Host Port:** `3000` (or any available port on TrueNAS, e.g. `3080` — this is the port you browse to: `http://<TRUENAS_IP>:<HOST_PORT>`)
+- **Protocol:** `TCP`
 
 ### Environment Variables
 | Variable | Value | Description |

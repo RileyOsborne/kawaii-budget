@@ -29,9 +29,11 @@ volumes:
 
 When setting up a Custom App in TrueNAS (or any other container manager), use these settings:
 
-### Container Settings
-- **Image:** `ghcr.io/rileyosborne/kawaii-budget:latest`
-- **Container Port 3000:** Maps to your preferred web port (e.g., `3000`)
+### Port Forwarding / Network
+TrueNAS requires specifying both a Container Port and a Host Port:
+- **Container Port:** `3000` (**Must be `3000`** — internal server & health check port)
+- **Host Port:** `3000` (or any available port on TrueNAS, e.g. `3080`)
+- **Protocol:** `TCP`
 
 ### Environment Variables
 | Variable | Value | Description |
