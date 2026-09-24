@@ -7,16 +7,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dbDir = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
+try {
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+} catch (err: any) {
+  console.warn(`[DB] Notice creating db directory '${dbDir}':`, err.message);
 }
 
 const dbPath = path.join(dbDir, 'kawaii_budget.sqlite');
 console.log('🌸 Initializing SQLite database at:', dbPath);
 
-export let db = new Database(dbPath);
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+let dbInstance: any;
+try {
+  dbInstance = new Database(dbPath);
+  dbInstance.pragma('journal_mode = WAL');
+  dbInstance.pragma('foreign_keys = ON');
+} catch (err: any) {
+  console.error(`🚨 Fatal: Failed to initialize SQLite database at '${dbPath}'. Please ensure directory is writable:`, err.message);
+  throw err;
+}
+
+export let db = dbInstance;
 
 export function getDb() {
   return db;
